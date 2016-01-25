@@ -1,0 +1,29 @@
+<dom-module id="app-shell">
+    <template>
+        <style>
+            :host {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+            }
+        </style>
+        <!-- bindRouter onUrlChange="updateModel" -->
+        <app-router id="router" class="flex">
+          <app-route path="/" element="page-home"></app-route>
+          <app-route path="/photos" element="page-photos"></app-route>
+          <app-route path="/**/www/index.html" element="page-home"></app-route>
+          <app-route path="*" element="page-not-found"></app-route>
+        </app-router>        
+    </template>
+    <script>
+        Polymer({
+           is: "app-shell",
+           listeners: {
+               'nav': 'handleNav'
+           },
+            handleNav: function(_, nav){
+                this.$.router.go(nav.url);
+            }
+        });
+    </script>
+</dom-module>
