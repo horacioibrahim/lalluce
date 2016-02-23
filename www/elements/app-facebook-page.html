@@ -1,0 +1,65 @@
+<dom-module id="app-facebook-page">
+  <style>
+    :host {
+      display: block;
+      position: absolute;
+      height: 100%;
+    }
+    iframe {
+        height: 100%;
+        border: 0px;         
+      }
+  </style>
+  <template>
+
+    <!--<div id="fb-root"></div>
+
+    <div class="fb-page" 
+      data-href="{{pageUrl}}" 
+      data-small-header="false"
+      data-adapt-container-width="true" data-hide-cover="false" 
+      data-show-facepile="true" data-show-posts="true">
+        <div class="fb-xfbml-parse-ignore">
+          <blockquote cite="{{pageUrl}}">
+            <a href="{{pageUrl}}">
+                page title</a>
+          </blockquote>
+        </div>
+      </div>  
+    -->
+    <iframe src="../fb.html"></iframe>
+
+  </template>
+</dom-module>
+<script>
+    Polymer({
+      is: 'app-facebook-page',
+      properties: {
+          pageUrl: {
+            type: String,
+            value: "https://www.facebook.com/anapersiana"
+          }
+      },
+      ready: function() {
+         /*
+          var self = this;
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '1433803006869179',
+              xfbml      : true,
+              version    : 'v2.5'
+            });
+          };
+          // init step 2
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));          
+        */
+      }
+          
+    });
+</script>

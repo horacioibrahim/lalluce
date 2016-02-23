@@ -15,19 +15,51 @@
             .thumbnail {
                 float: left;
             }
+            #container {
+                @apply(--layout-vertical);
+                @apply(--layout-wrap);
+                overflow-x: scroll;
+                /* width: 960px; */
+                height: 600px;
+                margin: 0 auto;
+            }
+            #container > paper-card {
+                box-sizing: border-box;
+                max-width: 320px;
+                margin: 4px;
+                flex: 0 0 auto;
+                @apply(--shadow-elevation-4dp);
+            }
+            #container > paper-card:nth-child(3n) {
+                /* none */
+            }
         </style>
                 
-        <iron-ajax
+        <!-- <iron-ajax
             auto
             url="https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key={{apikey}}&extras=url_n&per_page={{amount}}&page=1&format=json&nojsoncallback=1"
             handle-as="json"
             on-response="handleResponse"
-            debounce-duration="300"></iron-ajax>
-        <div class="container">
-            <template is="dom-repeat" id="photos" items="{{photos}}" as="item">
-                <img src="{{item.url_n}}">
+            debounce-duration="300"></iron-ajax>-->
+        
+            <!-- Start: this part is specific this app. Because to improve this separete it. -->
+        
+            <awesome-slider autostart="true" bullets="true">
+                <item source="../img/photo1.jpg"></item>
+                <item source="../img/photo2.jpg"></item>
+                <item source="../img/photo3.jpg"></item>
+            </awesome-slider>
+        
+            <!-- End: specific -->
+        
+        <!--
+        <div id="container">
+            <template is="dom-repeat" id="photos" items="{{linesPhotos.1}}" as="item">
+                <paper-card image="{{item.url_n}}"></paper-card>
             </template>
-        </div>
+        </div>  
+        -->   
+        
     </template>
     <script>
         Polymer({
@@ -38,12 +70,17 @@
             properties: {
                 amount: {
                     type: Number,
-                    value: 10,
+                    value: 9,
                     notify: true
                 },
-                photos: Array,
+                photos: {
+                    type: Array,
+                    value: '',
+                    observer: '_splitArray'
+                },
                 apikey: String,
-                tag: String             
+                tag: String,
+                linesPhotos: Object
             },
             // lifecycling events...
             ready: function () {
@@ -52,7 +89,15 @@
             },
             handleResponse: function(res){
                 this.photos = res.detail.response.photos.photo;
-            } 
+            },
+            _splitArray: function() {
+                this.linesPhotos = {
+                    1: this.photos.slice(0,3),
+                    2: this.photos.slice(3,6),
+                    3: this.photos.slice(6,9),
+                    4: this.photos[0]
+                }
+            }
         });
     </script>
 </dom-module>

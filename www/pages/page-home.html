@@ -10,10 +10,10 @@
                 color: rgba(0,0,0,.86);
             }
             .color-primary {
-                 background-color: #f50057;/* #FF5252;*/
+                 background-color: #FF004D;/* #FF5252;*/
             }
             .bg-primary {
-                background-color: #FF4081;
+                background-color: #9D0B28;
             }
             paper-header-panel {
                 width: 100%;
@@ -39,7 +39,7 @@
              margin: 60px auto;
             }   
             paper-header-panel .content {
-                background: linear-gradient(white, #FF4081);
+                background: linear-gradient(white, #9D0B28);
             }
             .cover .header {
                 position: relative;
@@ -51,6 +51,15 @@
                 background-size: cover;
                 @apply(--layout-horizontal);
             }
+            .cover .header img{
+                position: absolute;
+                float: left;
+                margin-left: 40px;
+                margin-top: 20px;
+                display: block;
+                width: 200px;
+                height: 149px;
+            }
             .cover .header h4 {
                 display: inline-block;
                 margin: 120px auto;
@@ -58,7 +67,7 @@
                 color: #FFF;
                 font-weight: 100;
                 font-size: 32px;
-                padding: 18px;
+                padding: 50px 18px 18px 18px;
                 letter-spacing: 2px;
                 text-shadow: 2px 2px 10px #FFF;
                 @apply(--layout-flex);
@@ -112,6 +121,20 @@
                 font-size: 18px;
                 line-height: 22px;
             }
+            .cover .social-proof .proof-more {
+                cursor: pointer;
+                color: #FF004D;
+                margin-top: -10px;
+            }
+            .cover .social-proof paper-dialog paper-card {
+                max-width: 420px;         
+                margin-bottom: 0;
+                --paper-card-header-color: white;
+                --paper-card-header-text: {
+                    background-color: rgba(0,0,0,0.09);
+                }
+                
+            }
             .cover .social-proof .proof-container {
                 @apply(--layout-horizontal);
                 margin-top:70px;
@@ -159,14 +182,48 @@
                 color: #FFF;
             }
             .cover .portfolio {
-                height: 425px;
-                background: rgba(0,0,0,1);
+                height: 480px;
+                /* padding: 8px;*/
+                background: #eeeeee;
+                border-bottom: 1px solid #e5e5e5;    
+                margin: 0;
                 overflow: hidden;
             }
             .cover .footer {
-                height: 345px;
-                background: rgba(0,0,0,1);
+                height: 260px;
+                background: #F9F9F9;
+                /* background: rgba(0,0,0,0.54);*/
+                padding-top: 30px;
+                margin-bottom: 60px;
+                @apply(--layout-horizontal);
+                color: rgba(0,0,0,0.54);
             } 
+            .cover .footer .col1, .cover .footer .col2 {
+                @apply(--layout-flex)
+            }
+            .cover .footer .col1 {
+                padding: 15px 30px 30px 50px;
+                
+            }
+            .cover .footer .col1 div.contacts-media {
+                vertical-align: middle;
+            }
+            .cover .footer .col1 div.contacts-media span {
+                padding-top: 16px;
+            }
+            .cover .footer .col1 div * {
+                display: inline-block;
+            }
+            .cover .footer .col1 img {
+                
+            }
+            .cover .footer .col2 {
+                text-align: center;
+                padding-left: 15%;
+            }
+            .cover .footer .col2 app-facebook-page {
+                margin-right: 0;
+            }
             .sprite-lovely {
                 background: url("../img/sprite.png") no-repeat;
                 width: 95px;
@@ -186,6 +243,7 @@
             <div class="paper-header tall bg-primary"></div>
             <div class="content cover">
                 <div class="header">
+                    <img src="../img/logo_small.png">
                     <h4>Mais de <strong>800</strong> projetos e <strong>1.8k+</strong> clientes felizes</h4>
                 </div>
                 <div class="why">
@@ -212,20 +270,57 @@
                             <div class="avatar">
                                 <img src="https://randomuser.me/api/portraits/med/men/21.jpg">
                             </div>
-                            <p><strong>Magda Borém</strong> - Arquiteta<br>Atende a mim e meus clientes, com muito profissionalismo, pontualidade e atenção. Tem produtos diferenciados, modernos e de última geração!!! Vale a pena pedir um orçamento, tem preço justo e facilidades de pagamentos!</p>
+                            <p><strong>Magda Borém</strong> - Arquiteta<br>"Atende a mim e meus clientes, com muito profissionalismo, pontualidade e atenção. Tem produtos diferenciados, modernos e de última geração!!! Vale a pena pedir um orçamento, tem preço justo e facilidades de pagamentos!"</p>
+                            <small class="proof-more" data-dialog="oneDialog" on-click="handlerDialog">Mais...</small>                            
                         </div>
                         <div class="proofs">
                             <div class="avatar">
                                 <img src="https://randomuser.me/api/portraits/med/women/18.jpg">
                             </div>
-                            <p><strong>Magda Borém</strong> - Arquiteta<br>Atende a mim e meus clientes, com muito profissionalismo, pontualidade e atenção. Tem produtos diferenciados, modernos e de última geração!!! Vale a pena pedir um orçamento, tem preço justo e facilidades de pagamentos!</p>
+                            <p><strong>Clarissa Falcão</strong> - Cliente<br>
+                                "Conheci a Anapaula por indicação de minha colega e amiga Fabíola, também Designer de Interiores, por prestar excelente serviço personalizado, com ótimas opções de produtos e bons preços..."
+                            </p>
+                            <small class="proof-more" data-dialog="twoDialog" on-click="handlerDialog">Mais...</small>
                         </div>
                         <div class="proofs">
                             <div class="avatar">
                                 <img src="https://randomuser.me/api/portraits/med/women/8.jpg">
                             </div>
-                            <p><strong>Magda Borém</strong> - Arquiteta<br>Atende a mim e meus clientes, com muito profissionalismo, pontualidade e atenção. Tem produtos diferenciados, modernos e de última geração!!! Vale a pena pedir um orçamento, tem preço justo e facilidades de pagamentos!</p>                       
+                            <p><strong>Mônica Mendes Vieira</strong> - Arquiteta<br>
+                                "Sou arquiteta e conheci a Ana por indicação de uma grande amiga, também arquiteta. Nossa, foi encanto desde o primeiro encontro! Não se trata de uma comerciante que quer vender a qualquer custo..."                            
+                            </p>                       
+                            <small class="proof-more" data-dialog="threeDialog" on-click="handlerDialog">Mais...</small>
                         </div>
+                        
+                        <!-- DIALOGS -->
+                        <paper-dialog id="oneDialog" with-backdrop>
+                            <paper-card heading="Magda Borém" image="../img/social_person_one.png">
+                                <div class="card-content">
+                                    <p><strong>Magda Borém</strong> - Arquiteta<br>Atende a mim e meus clientes, com muito profissionalismo, pontualidade e atenção. Tem produtos diferenciados, modernos e de última geração!!! Vale a pena pedir um orçamento, tem preço justo e facilidades de pagamentos!</p>
+                                </div>
+                            </paper-card>                       
+                        </paper-dialog> 
+                        <!-- 2 -->
+                        <paper-dialog id="twoDialog" with-backdrop>
+                            <paper-card heading="Clarissa Falcão" image="../img/social_person_one.png">
+                                <div class="card-content">
+                                    <p><strong>Clarissa Falcão</strong> - Cliente<br>
+                                    "Conheci a Anapaula por indicação de minha colega e amiga Fabíola, também Designer de Interiores, por prestar excelente serviço personalizado, com ótimas opções de produtos e bons preços, além de ser de extrema confiança.
+                                     Pude confirmar tudo isso, adorei o atendimento! Anapaula me atendeu com toda a paciência e atenção, ajudando a escolher a melhor opção de produtos para cada ambiente da minha casa e oferecendo boas possibilidades de pagamento. Agora a indico para meus amigos."                                    
+                                    </p>
+                                </div>
+                            </paper-card>                       
+                        </paper-dialog> 
+                        <!-- 3 -->
+                        <paper-dialog id="threeDialog" with-backdrop>
+                            <paper-card heading="Mônica Mendes Vieira" image="../img/social_person_one.png">
+                                <div class="card-content">
+                                    <p><strong>Mônica Mendes Vieira</strong> - Arquiteta<br>
+                                        "Sou arquiteta e conheci a Ana por indicação de uma grande amiga, também arquiteta. Nossa, foi encanto desde o primeiro encontro! Não se trata de uma comerciante que quer vender a qualquer custo. Trata-se de uma profissional extremamente simpática e atenciosa, que faz de tudo para atender da melhor forma possível. É profissionalismo e simpatia numa pessoa só. A cada cliente indicado, um novo encontro, um novo elogio e um novo agradecimento pela indicação. Até o momento, 100% dos meus clientes ficaram satisfeitos com o resultado do trabalho. Pontual, cuidadosa, técnica e sempre disponível. Esse é outro ponto que merece destaque: sempre disponível, inclusive para fazer ajustes caso sejam necessários - isso acontece! Parabéns pelo trabalho, Ana! Estou feliz com a parceria e tranquila por saber que a minha indicação é confiável."                    
+                                    </p>
+                                </div>
+                            </paper-card>                       
+                        </paper-dialog>                                                 
                     </div>
                 </div> 
                 <div class="lovely color-primary">
@@ -255,16 +350,42 @@
                     <app-flickr></app-flickr>
                 </div>  
                 <div class="footer">
-                    <div class="fb-page" data-href="https://www.facebook.com/netbola/" data-tabs="timeline" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/netbola/"><a href="https://www.facebook.com/netbola/">Netbola</a></blockquote></div></div>              
+                    <div class="col1">
+                        <h4>Contato:</h4>
+                        <div class="contacts-media">
+                            <img src="../img/whatsapp-logo-icone.png" width="40px" align="middle">
+                            <span>(61) 9558-4271</span>
+                        </div>
+                        <div class="contacts-media">
+                            <img src="../img/New_Logo_Gmail.svg.png" width="35px" align="middle">
+                            <span>anapersiana@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="col2"><span>
+                        <app-facebook-page></app-facebook-page>
+                        </span>
+                    </div>
                     
-                    <div id="fb-root"></div>
                 </div>                 
             </div>
         </paper-header-panel>
     </template>
     <script>
         Polymer({
-            is: "page-home"
+            is: "page-home",
+            handlerDialog: function(evt) {
+              var elemClicked = evt.target;
+                
+              if (!elemClicked.hasAttribute('data-dialog')) {
+                return;
+              }
+                
+              var id = elemClicked.getAttribute('data-dialog');
+              var dialog = this.querySelector('#' + id);
+              if (dialog) {
+                dialog.open();
+              }                
+            }
         });
     </script>
 </dom-module>    

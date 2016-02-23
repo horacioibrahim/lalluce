@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var vulcanize = require('gulp-vulcanize');
+var uglify = require('gulp-uglify');
+var minifyCss = require('gulp-minify-css');
+var image = require('gulp-image');
 
 // watch files for changes and reload
 gulp.task('serve', function(){
@@ -13,7 +16,7 @@ gulp.task('serve', function(){
 });
 
 // concatenate custom elements 
-gulp.task('dist', function(){
+gulp.task('vulcanize', function(){
   return gulp.src('www/index.html')
   .pipe(vulcanize({
       stripComments: true,
@@ -22,4 +25,22 @@ gulp.task('dist', function(){
   .pipe(gulp.dest('dist'))
 });
 
-gulp.task('default', ['serve', 'vulcanize']);
+gulp.task('compress', function() {
+  return gulp.src('www/js/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('minify-css', function() {
+  return gulp.src('www/css/*.css')
+    .pipe(minifyCss({compatibility: 'ie8'}))
+    .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('image', function(){
+   gulp.src('./www/img/*') 
+   .pipe(image())
+   .pipe(gulp.dest('./dist/img'));
+});
+
+gulp.task('dist', ['vulcanize', 'compress', 'minify-css', 'image']);
